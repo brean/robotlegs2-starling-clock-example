@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<s:Group xmlns:fx="http://ns.adobe.com/mxml/2009"
+    xmlns:s="library://ns.adobe.com/flex/spark">
+    <s:layout>
+        <s:VerticalLayout />
+    </s:layout>
+    <fx:Script>
+    <![CDATA[
+        import example.view.events.ButtonClickEvent;
+    ]]>
+    </fx:Script>
+    <!-- this view dispatches an event. You also can mediate the button
+         directly, but I want to mediate this view for this example. 
+         So when the button is clicked, a new Event will be
+         dispatched and catched by the mediator.
+         This is step 1. "UI sends event" in the Class Diagram at 
+         http://www.robotlegs.org/diagram/ .
+          -->
+    <s:Button label="click me to start clock!" 
+              click="dispatchEvent(new ButtonClickEvent())" />
+    <s:Label id="time" text="click the button to show current data and time" />
+</s:Group>

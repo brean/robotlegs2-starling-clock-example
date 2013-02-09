@@ -1,0 +1,84 @@
+<?xml version="1.0"?>
+<!--
+    Example for flex and spark components working with 
+    robotlegs (Version 2 Beta 4) and Starling 1.3
+-->
+<s:Application xmlns:fx="http://ns.adobe.com/mxml/2009"
+               xmlns:s="library://ns.adobe.com/flex/spark"
+               xmlns:view="example.view.*"
+               preinitialize="preInit(event)"
+               addedToStage="added(event)"
+               backgroundAlpha="0"
+               frameRate="60">
+
+    <fx:Script>
+    <![CDATA[
+        import flash.events.Event;
+        import mx.events.ResizeEvent;
+        
+        //Starling imports
+        import starling.events.Event;
+        import starling.core.Starling;
+        import example.view.StarlingMain;
+        
+        private var starling:Starling;
+        
+        // main config for Robotlegs
+        private var config:MainConfig;
+        
+        /**
+         * create robotlegs context as first thing (before the Application
+         *  has been initialized)
+         */
+        private function preInit(event:flash.events.Event):void {
+            
+        }
+        
+        private function added(event:flash.events.Event):void {
+            // init stage.
+            stage.scaleMode = StageScaleMode.NO_SCALE;
+            stage.align = StageAlign.TOP_LEFT;
+            
+            // init Starling
+            starling = new Starling(StarlingMain, stage);
+            config = new MainConfig(this, starling);
+            this.initStarling();
+            // handle resize
+            stage.addEventListener(ResizeEvent.RESIZE, onResize);
+        }
+        
+        /**
+         * handle resize
+         * update width and height for starling
+         */
+        private function onResize(e:flash.events.Event):void {
+            // set rectangle dimensions for viewPort:
+            var viewPortRectangle:Rectangle = new Rectangle();
+            viewPortRectangle.width = stage.stageWidth;
+            viewPortRectangle.height = stage.stageHeight;
+
+            // resize the viewport:
+            Starling.current.viewPort = viewPortRectangle;
+
+            // assign the new stage width and height:
+            starling.stage.stageWidth = stage.stageWidth;
+            starling.stage.stageHeight = stage.stageHeight;
+        }
+        
+        /**
+         * configure and start Starling
+         */
+        private function initStarling():void {
+            starling.showStats = true;
+            starling.antiAliasing = 1;
+            starling.start();
+        }
+    ]]>
+    </fx:Script>
+
+    <!-- GUI with spark / mx flex components
+         this UI will be mediated by GUIViewMediator -->
+    <view:GUIView width="100%" height="100%" top="30" left="0" />
+    
+
+</s:Application>
