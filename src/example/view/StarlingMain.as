@@ -2,7 +2,8 @@ package example.view {
     import feathers.themes.MyDesktopTheme;
     import starling.display.Sprite;
     import starling.events.Event;
-    import example.view.button.MyButton;
+    
+    import example.view.StarlingView;
     
     /**
      * Starling-Startup class
@@ -24,13 +25,10 @@ package example.view {
             // set Starling feathers theme 
             this.theme = new MyDesktopTheme(this.stage);
             
-            //create new custom feathers object that will be mediated
-            var btn:MyButton = new MyButton();
-            btn.updateText("this button will be updated shortly.");
-            btn.x = 200;
-            btn.y = 0;
-            btn.label = "Click Me!";
-            this.addChild(btn);
+            // add starling-based component
+            // to show that this one will not(!) be monitored by
+            // the robotlegs-starling-viewMap lib
+            this.addChild(new StarlingView());
         }
     }
 }

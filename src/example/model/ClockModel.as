@@ -21,6 +21,5 @@ package example.model {
             //Class Diagram at http://www.robotlegs.org/diagram/ 
 	        eventDispatcher.dispatchEvent(new ClockUpdateEvent(date));
 	    }
-	    
     }
 }

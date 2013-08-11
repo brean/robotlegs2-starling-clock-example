@@ -13,6 +13,7 @@
 
     <fx:Script>
     <![CDATA[
+        import flash.events.KeyboardEvent;
         import flash.events.Event;
         import mx.events.ResizeEvent;
         
@@ -45,6 +46,15 @@
             this.initStarling();
             // handle resize
             stage.addEventListener(ResizeEvent.RESIZE, onResize);
+            stage.addEventListener(KeyboardEvent.KEY_DOWN, keyDown)
+        }
+        
+        private function keyDown(e:KeyboardEvent):void {
+            // x will destroy everything
+            if (e.keyCode == 120) {
+                config.deinitialize();
+                starling.stop();
+            }
         }
         
         /**

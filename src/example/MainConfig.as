@@ -5,6 +5,8 @@ package example {
     import robotlegs.bender.extensions.eventCommandMap.api.IEventCommandMap;
     import robotlegs.bender.extensions.contextView.ContextView;
     import robotlegs.extensions.starlingViewMap.StarlingViewMapExtension;
+    import example.view.StarlingView;
+    import example.mediator.StarlingViewMediator;
     import example.mediator.GUIViewMediator;
     import example.mediator.MyButtonMediator;
     import example.view.GUIView;
@@ -37,6 +39,7 @@ package example {
             
             // map starling/feathers Button to Mediator
             mediatorMap.map(example.view.button.MyButton).toMediator(MyButtonMediator);
+            mediatorMap.map(example.view.StarlingView).toMediator(StarlingViewMediator);
             
             // map command to event
             commandMap = context.injector.getInstance(IEventCommandMap);
@@ -48,6 +51,13 @@ package example {
             context.injector.map(ClockModel).asSingleton();
             // map service as Singleton
             context.injector.map(ClockService).asSingleton();
+        }
+        
+        public function deinitialize():void {
+            
+            context = null;
+            mediatorMap = null;
+            commandMap = null;
         }
     }
 }
