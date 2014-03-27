@@ -22,11 +22,11 @@ repositories {
 dependencies {
     flexSDK group: 'org.apache', name: 'apache-flex-sdk', version: '4.9.1', ext: 'zip'
     //external files('libs/')
-    internal files('libs/starling-1.3.swc')
-    internal files('libs/Swiftsuspenders-v2.0.0rc3.swc')
-    internal files('libs/robotlegs-framework-v2.1.0.swc')
-    internal files('libs/feathers-1.0.0.swc')
-    internal files('libs/robotlegs2.1.0-starling1.3-viewmap-0.2.swc')
+    internal files('libs/starling-1.4.1.swc')
+    internal files('libs/Swiftsuspenders-v2.0.0.swc')
+    internal files('libs/robotlegs-framework-v2.2.0.swc')
+    internal files('libs/feathers-1.2.0.swc')
+    internal files('libs/robotlegs2.2.0-starling1.4.1-viewmap.swc')
 }
 
 sdkAutoInstall {
